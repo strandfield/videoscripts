@@ -146,3 +146,11 @@ ffmpeg -i myvideo.avi -vf fps=1/60 img%04d.png
 The `fps` filter controls the number of frame extracted per second.
 
 More: https://stackoverflow.com/questions/10957412/fastest-way-to-extract-frames-using-ffmpeg
+
+## PowerShell commands
+
+List all files in subdirectories with the "mkv" extension.
+
+```ps
+Get-ChildItem -Recurse -Filter "*.mkv"
+```
