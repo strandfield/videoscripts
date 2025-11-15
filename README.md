@@ -154,3 +154,9 @@ List all files in subdirectories with the "mkv" extension.
 ```ps
 Get-ChildItem -Recurse -Filter "*.mkv"
 ```
+
+Redirect the stderr stream to stdout and "grep" the output:
+
+```ps
+ffmpeg -i .\t00.mkv 2>&1 | Select-String -Pattern "Stream #0:*"
+```
