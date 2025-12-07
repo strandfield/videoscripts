@@ -23,6 +23,12 @@ ffmpeg -i video.mkv -map 0:0 -map 0:1 -map 0:3 output.mkv
 
 More: https://trac.ffmpeg.org/wiki/Map
 
+**Removing chapters**
+
+Use `-map_chapters -1`.
+
+https://video.stackexchange.com/questions/20270/ffmpeg-delete-chapters
+
 **Cropping**
 
 Detecting the crop:
@@ -159,4 +165,12 @@ Redirect the stderr stream to stdout and "grep" the output:
 
 ```ps
 ffmpeg -i .\t00.mkv 2>&1 | Select-String -Pattern "Stream #0:*"
+```
+
+Test if a directory exists:
+
+```ps
+if ((Test-Path "dirname") -eq $false) { 
+    New-Item -ItemType Directory -Name "dirname"
+}
 ```

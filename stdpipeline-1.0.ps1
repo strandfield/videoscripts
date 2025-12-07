@@ -287,11 +287,11 @@ function Run-Pipeline {
         $Title = $null,
         $VideoStreamNum = "detect",
         $AudioFrStreamNum = "detect",
-        $AudioEnStreamNum = "detect"
+        $AudioEnStreamNum = "detect",
+        $Crop = $null
     )
     
     $AC = $global:PipelineAC
-    $Crop = $global:PipelineCrop
     $Deinterlace = $global:PipelineDeinterlace
     $Denoise = $global:PipelineDenoise
     $Scale = $global:PipelineScale
@@ -307,6 +307,13 @@ function Run-Pipeline {
     $OriginalLanguage = $global:PipelineOriginalLanguage
     $KeepVideoChapters = $global:PipelineKeepVideoChapters
     
+    if ($Crop -ne $null) {
+        echo "Settings custom crop to '$Crop'"
+        $global:PipelineCrop = $Crop
+    } else {
+        $Crop = $global:PipelineCrop
+    }
+
     echo "Starting pipeline..."
     
     if (($Output -eq $null) -or ($Output -eq "")) {
