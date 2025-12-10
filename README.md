@@ -153,6 +153,12 @@ The `fps` filter controls the number of frame extracted per second.
 
 More: https://stackoverflow.com/questions/10957412/fastest-way-to-extract-frames-using-ffmpeg
 
+**Extract all subtitle tracks**
+
+```bash
+ffmpeg -i video.mkv -map 0:s -c:s copy subs.mkv
+```
+
 ## PowerShell commands
 
 List all files in subdirectories with the "mkv" extension.
@@ -160,6 +166,14 @@ List all files in subdirectories with the "mkv" extension.
 ```ps
 Get-ChildItem -Recurse -Filter "*.mkv"
 ```
+
+Rename multiple files:
+
+```ps
+Get-ChildItem *.txt | Rename-Item -NewName { $_.Name -replace '.txt','.log' }
+```
+
+More: https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/rename-item
 
 Redirect the stderr stream to stdout and "grep" the output:
 
