@@ -82,6 +82,23 @@ function Detect-Subtitles {
     }
 }
 
+function Print-StreamList {
+    param (
+        $FileName,
+        $Outfile = $null
+    )
+        
+    $lines = (ffmpeg -i $FileName 2>&1) | Select-String -Pattern "Stream #0:" | ForEach-Object { $_.ToString().Trim() }
+
+    if ($Outfile -eq $null) {
+        Write-Output $lines
+    } else {
+        $lines | Out-File -Encoding utf8 $Outfile
+    }
+    
+}
+
 
 Export-ModuleMember -Function Detect-Crop
 Export-ModuleMember -Function Detect-Subtitles
+Export-ModuleMember -Function Print-StreamList
