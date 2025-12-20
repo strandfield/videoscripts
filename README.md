@@ -188,3 +188,9 @@ if ((Test-Path "dirname") -eq $false) {
     New-Item -ItemType Directory -Name "dirname"
 }
 ```
+
+Write stream list for all files in a directory:
+
+```ps
+Get-ChildItem *.mkv | % {Print-StreamList  $_.Name -Outfile ($_.Basename + ".txt") }
+```
